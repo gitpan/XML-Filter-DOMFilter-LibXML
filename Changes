@@ -1,0 +1,6 @@
+Revision history for Perl extension XML::Filter::DOMFilter::LibXML.
+
+0.01  Thu Apr  3 10:48:00 2003
+	- original version; created by h2xs 1.21 with options
+		-Afn XML::Filter::DOMFilter::LibXML
+
