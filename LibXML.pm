@@ -2,7 +2,7 @@ package XML::Filter::DOMFilter::LibXML;
 
 use 5.006;
 use strict;
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 use XML::LibXML::SAX::Builder;
 use XML::LibXML::SAX::Parser;
@@ -115,7 +115,7 @@ sub start_element {
 	$self->_match($parent || $self->{DOM})) {
       $self->{FULL_TREE}=1;
     } else {
-      $self->{Handler}->start_element($el);
+      $self->{Handler}->start_element($el) if defined($self->{Handler});
     }
   }
 }
@@ -285,8 +285,6 @@ parameters, some of which are optional.
        );
 
 
-=over 8
-
 B<Handler> - Optional output SAX handler.
 
 B<XPathContext> - Optional L<XML::LibXML::XPathContext|XML::LibXML::XPathContext> object
@@ -297,11 +295,14 @@ B<Process> - Required. An array reference of the form C<[ XPath =E<gt>
 Code, XPath =E<gt> Code, ...]> where XPath is a string containing an
 XPath expression and Code is a callback CODE reference.
 
+=item
+
 =back
+
 
 =head2 EXPORT
 
-None by default.
+None.
 
 =head1 AUTHOR
 
